@@ -1,0 +1,88 @@
+*{
+    margin: auto;
+    color: white;
+}
+
+html{
+    overflow:  hidden;
+}
+
+body{
+    background-color: black;
+}
+
+.xo{
+    font-size: 250px;
+    width: 200px;
+    height: 200px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    position: relative;
+    pointer-events: none;
+    user-select: none;
+    transform: translate(0, -40%);
+}
+
+.field{
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 600px;
+    height: 600px;
+    border-color: white;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+}
+.box{
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+#motion{
+    position: absolute;
+    top: 180px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 50vw;
+    transform: translate(-50%);
+    user-select: none;
+}
+#button{
+    position: absolute;
+    top: 850px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 50vw;
+    transform: translate(-50%);
+    user-select: none;
+}
+#counter{
+    width: 130px;
+    height: 55px;
+    position: absolute;
+    border-width: 3px;
+    border-color: rgb(5, 5, 5);
+    border-style: solid;
+    top: 100px;
+    left: 85%;
+    font-size: 15px;
+    background-color: rgb(3, 3, 3);
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#counter legend{
+    font-size: 20px;
+}
+#all{
+    position: absolute;
+    width: 100vw;
+    height: 100vw;
+    pointer-events: none;
+}

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>tic tac toe</title>
+</head>
+
+<body>
+    <h1 id="motion">Ходит нолик!</h1>
+    <div class="field", id='field'>
+        <div class="box", id="box1"></div>
+        <div class="box", id="box2"></div>
+        <div class="box", id="box3"></div>
+        <div class="box", id="box4"></div>
+        <div class="box", id="box5"></div>
+        <div class="box", id="box6"></div>
+        <div class="box", id="box7"></div>
+        <div class="box", id="box8"></div>
+        <div class="box", id="box9"></div>
+    </div>
+    <h3 id="button">Отчистить</h3>
+    
+    <fieldset id="counter">
+        <legend>Счёт</legend>
+        Крестик: 0
+        <br>
+        Нолик: 0
+    </fieldset>
+    <div id="all"></div>
+
+
+    <script>
+        let who = 0;
+        let e;
+
+        let player1 = 0, player2 = 0;
+
+        let O = '<div class="xo">o</div>';
+        let X = '<div class="xo">x</div>';
+
+        function clear() {
+            getWho()
+            box1.innerHTML = ''
+            box1.style.pointerEvents='auto'
+            box2.innerHTML = ''
+            box2.style.pointerEvents='auto'
+            box3.innerHTML = ''
+            box3.style.pointerEvents='auto'
+            box4.innerHTML = ''
+            box4.style.pointerEvents='auto'
+            box5.innerHTML = ''
+            box5.style.pointerEvents='auto'
+            box6.innerHTML = ''
+            box6.style.pointerEvents='auto'
+            box7.innerHTML = ''
+            box7.style.pointerEvents='auto'
+            box8.innerHTML = ''
+            box8.style.pointerEvents='auto'
+            box9.innerHTML = ''
+            box9.style.pointerEvents='auto'
+        }
+        function getWho(){
+            if (!who) {
+                motion.innerHTML = "Ходит крестик!";
+            } else {
+                motion.innerHTML = "Ходит нолик!";
+            }
+            who = !who
+        }
+        function win(){
+            if ((box1.innerHTML == O && box2.innerHTML == O && box3.innerHTML == O)
+            || (box1.innerHTML == O && box4.innerHTML == O && box7.innerHTML == O)
+            || (box1.innerHTML == O && box5.innerHTML == O && box9.innerHTML == O)
+            || (box7.innerHTML == O && box5.innerHTML == O && box3.innerHTML == O)
+            || (box7.innerHTML == O && box8.innerHTML == O && box9.innerHTML == O)
+            || (box7.innerHTML == O && box5.innerHTML == O && box3.innerHTML == O)
+            || (box2.innerHTML == O && box5.innerHTML == O && box8.innerHTML == O)
+            || (box4.innerHTML == O && box5.innerHTML == O && box6.innerHTML == O)){
+                motion.innerHTML = 'Победил нолик!';
+                all.style.pointerEvents='auto';
+                setTimeout(() => {
+                    clear();
+                    all.style.pointerEvents = 'none';
+                    player2++
+                    counter.innerHTML = `<legend>Счёт</legend>Крестик: ${player1}<br>Нолик: ${player2}`;
+                }, 2000);
+            } else if ((box1.innerHTML == X && box2.innerHTML == X && box3.innerHTML == X)
+            || (box1.innerHTML == X && box4.innerHTML == X && box7.innerHTML == X)
+            || (box1.innerHTML == X && box5.innerHTML == X && box9.innerHTML == X)
+            || (box7.innerHTML == X && box5.innerHTML == X && box3.innerHTML == X)
+            || (box7.innerHTML == X && box8.innerHTML == X && box9.innerHTML == X)
+            || (box7.innerHTML == X && box5.innerHTML == X && box3.innerHTML == X)
+            || (box2.innerHTML == X && box5.innerHTML == X && box8.innerHTML == X)
+            || (box4.innerHTML == X && box5.innerHTML == X && box6.innerHTML == X)){
+                motion.innerHTML = 'Победил крестик!';
+                all.style.pointerEvents='auto';
+                player1++
+                counter.innerHTML = `<legend>Счёт</legend>Крестик: ${player1}<br>Нолик: ${player2}`;
+                setTimeout(() => {
+                    clear();
+                    all.style.pointerEvents = 'none';
+                }, 2000);
+            }else if (box1.innerHTML != '' && box2.innerHTML != '' && box3.innerHTML != '' && box4.innerHTML != '' &&
+             box5.innerHTML != '' && box6.innerHTML != '' && box7.innerHTML != '' && box8.innerHTML != '' && box9.innerHTML != ''){
+                motion.innerHTML = 'Ничья!';
+                all.style.pointerEvents='auto';
+                setTimeout(() => {
+                    clear();
+                    all.style.pointerEvents = 'none';
+                }, 2000);
+            }
+        }
+        document.addEventListener('click', e => {
+            if (e.target.id == 'box1') {
+                if (who) {
+                    box1.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box1.innerHTML = "<div class='xo'>o</div>";
+                }
+                box1.style.pointerEvents='none'
+                console.log(box1.innerHTML)
+                getWho()
+                win()
+            }
+            if (e.target.id == 'box2') {
+                if (who) {
+                    box2.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box2.innerHTML = "<div class='xo'>o</div>";
+                }
+                box2.style.pointerEvents='none'
+                getWho()
+                win()
+            }
+            if (e.target.id == 'box3') {
+                if (who) {
+                    box3.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box3.innerHTML = "<div class='xo'>o</div>";
+                }
+                box3.style.pointerEvents='none'
+                getWho()
+                win()
+            }
+            if (e.target.id == 'box4') {
+                if (who) {
+                    box4.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box4.innerHTML = "<div class='xo'>o</div>";
+                }
+                box4.style.pointerEvents='none'
+                getWho()
+                win()
+            }
+            if (e.target.id == 'box5') {
+                if (who) {
+                    box5.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box5.innerHTML = "<div class='xo'>o</div>";
+                }
+                box5.style.pointerEvents='none'
+                getWho()
+                win()
+            }
+            if (e.target.id == 'box6') {
+                if (who) {
+                    box6.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box6.innerHTML = "<div class='xo'>o</div>";
+                }
+                box6.style.pointerEvents='none'
+                getWho()
+                win()
+            }
+            if (e.target.id == 'box7') {
+                if (who) {
+                    box7.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box7.innerHTML = "<div class='xo'>o</div>";
+                }
+                box7.style.pointerEvents='none'
+                getWho()
+                win()
+            }
+            if (e.target.id == 'box8') {
+                if (who) {
+                    box8.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box8.innerHTML = "<div class='xo'>o</div>";
+                }
+                box8.style.pointerEvents='none'
+                getWho()
+                win()
+            }
+            if (e.target.id == 'box9') {
+                if (who) {
+                    box9.innerHTML = "<div class='xo'>x</div>";
+                } else {
+                    box9.innerHTML = "<div class='xo'>o</div>";
+                }
+                box9.style.pointerEvents='none'
+                getWho()
+                win()
+            }
+        })
+        button.onclick = function(){
+            clear()
+        };
+    </script>
+</body>
+
+</html>
