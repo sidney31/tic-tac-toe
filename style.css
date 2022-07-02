@@ -28,7 +28,6 @@ body{
     grid-template-columns: repeat(3, 200px);
     grid-template-rows: repeat(3.0, 200px);
     position: absolute; 
-    top: 25%;
     bottom: 25%;
     left: 50%;
     transform: translate(-50%, 0);
