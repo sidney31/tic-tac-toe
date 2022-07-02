@@ -28,7 +28,7 @@ body{
     grid-template-columns: repeat(3, 200px);
     grid-template-rows: repeat(3.0, 200px);
     position: absolute; 
-    bottom: 25%;
+    bottom: 15%;
     left: 50%;
     transform: translate(-50%, 0);
     width: 600px;
@@ -49,10 +49,11 @@ body{
 
 #motion{
     position: absolute;
-    bottom: 90%;
+    bottom: 80%;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 50vw;
     transform: translate(-50%);
+    font-size: 50px;
     user-select: none;
 }
 #button{
@@ -70,8 +71,8 @@ body{
     border-width: 1px;
     border-color: white;
     border-style: solid;
-    top: 15%;
-    right: 15%;
+    top: 18%;
+    right: 10%;
     font-size: 15px;
     background-color: rgb(7, 7, 7);
     border-radius: 10px;
