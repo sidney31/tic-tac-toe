@@ -50,7 +50,7 @@ body{
 
 #motion{
     position: absolute;
-    top: 10%;
+    bottom: 90%;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 50vw;
     transform: translate(-50%);
