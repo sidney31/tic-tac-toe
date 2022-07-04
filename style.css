@@ -1,86 +1,106 @@
-*{
-    margin: auto;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     color: white;
 }
 
 html{
     overflow:  hidden;
+    background-color: rgb(0, 0, 0);
 }
 
 body{
-    background-color: black;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
 }
 
-.xo{
-    font-size: 250px;
-    width: 200px;
-    height: 200px;
+span{
+    animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+    animation-duration: 5s;
+    animation-name: test;
+}
+@keyframes test {
+  0%   {
+    transform: rotate(0deg);
+    left: 0px;
+    top: 0px;
+  }
+  25%  {
+    transform:rotate(90deg);
+    left:300px; 
+    top:300px;
+  }
+  50%  {
+    transform:rotate(180deg); 
+    left:300px; 
+    top:400px;
+  }
+  75%  {
+    transform:rotate(270deg);
+    scale: 20;
+  }
+  100% {transform:rotate(360deg);
+    left:300px;
+    top:600px;
+  }
+}
+
+i{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    position: relative;
     pointer-events: none;
     user-select: none;
-    transform: translate(0, -40%);
+    transform: translate(50%, 50%);
 }
 
 .field{
+    margin-top: 1vw;
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3.0, 200px);
-    position: absolute; 
-    bottom: 15%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 600px;
-    height: 600px;
-    border-color: white;
-    border-style: solid;
-    border-width: 3px;
-    border-radius: 10px;
+    grid-template-columns: repeat(3, calc(50ch/3));
+    grid-template-rows: repeat(3, calc(50ch/3));
 }
 .box{
     border-color: white;
-    border-style: solid;
-    border-width: 1px;
-    width: 200px;
-    height: 200px;
     position: relative;
+    justify-content: center;
+    border-style: solid;
 }
-
 #motion{
-    position: absolute;
-    bottom: 80%;
+    text-align: center;
+    width: 15ch;
+    font-size: 3em;
     font-family: Arial, Helvetica, sans-serif;
-    margin-left: 50vw;
-    transform: translate(-50%);
-    font-size: 50px;
-    user-select: none;
 }
 #button{
     position: absolute;
     bottom: 7%;
     font-family: Arial, Helvetica, sans-serif;
-    margin-left: 50vw;
-    transform: translate(-50%);
     user-select: none;
 }
 #counter{
-    width: 130px;
-    height: 55px;
-    position: absolute;
-    border-width: 1px;
-    border-color: white;
-    border-style: solid;
-    top: 18%;
-    right: 10%;
-    font-size: 15px;
-    background-color: rgb(7, 7, 7);
-    border-radius: 10px;
+    width: 30ch;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3em;
     font-family: Arial, Helvetica, sans-serif;
 }
-#counter legend{
-    font-size: 20px;
+#counter::before{
+    content: "\f00d";
+    font-family: FontAwesome;
+    color: rgb(206, 32, 41);
+    font-size: 1.3em;
 }
+#counter::after{
+    content: "\f1db";
+    font-family: FontAwesome;
+    color: rgb(33, 110, 190);
+    font-size: 1.3em;
+}
+
 #version{
     position: absolute;
     top: 1%;

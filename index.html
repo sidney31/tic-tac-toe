@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <title>tic tac toe</title>
 </head>
 
 <body>
-    <div id="version">v0.5</div>
-    <h1 id="motion">Ходит нолик!</h1>
+    <div id="version">v0.6</div>
+    <div id="motion">Ходит нолик!</div>
+    <div id="counter">
+        <div>Крестик: 0</div> 
+        <div>Нолик: 0</div>
+    </div>
     <div class="field", id='field'>
         <div class="box", id="box1"></div>
         <div class="box", id="box2"></div>
@@ -23,15 +28,17 @@
         <div class="box", id="box8"></div>
         <div class="box", id="box9"></div>
     </div>
-    <h3 id="button">Отчистить</h3>
+    <h3 id="button">Очистить</h3>
+    <div id="all">
+        <span class="fa fa-circle-thin fa-5x"></span>
+        <span class='fa fa-times fa-5x'></span>
+    </div>
     
-    <fieldset id="counter">
-        <legend>Счёт</legend>
-        Крестик: 0
-        <br>
-        Нолик: 0
-    </fieldset>
-    <div id="all"></div>
+
+
+
+
+
 
 
     <script>
@@ -40,29 +47,15 @@
 
         let player1 = 0, player2 = 0;
 
-        let O = '<div class="xo">o</div>';
-        let X = '<div class="xo">x</div>';
+        let O = "<i class='fa fa-circle-thin fa-5x'></i>";
+        let X = "<i class='fa fa-times fa-5x'></i>";
 
         function clear() {
             getWho()
-            box1.innerHTML = ''
-            box1.style.pointerEvents='auto'
-            box2.innerHTML = ''
-            box2.style.pointerEvents='auto'
-            box3.innerHTML = ''
-            box3.style.pointerEvents='auto'
-            box4.innerHTML = ''
-            box4.style.pointerEvents='auto'
-            box5.innerHTML = ''
-            box5.style.pointerEvents='auto'
-            box6.innerHTML = ''
-            box6.style.pointerEvents='auto'
-            box7.innerHTML = ''
-            box7.style.pointerEvents='auto'
-            box8.innerHTML = ''
-            box8.style.pointerEvents='auto'
-            box9.innerHTML = ''
-            box9.style.pointerEvents='auto'
+            for (let i = 1; i< 10; i++){
+                eval(`box${i}.innerHTML = "";`)
+                eval(`box${i}.style.pointerEvents="auto";`)
+            }
         }
         function getWho(){
             if (!who) {
@@ -73,139 +66,47 @@
             who = !who
         }
         function win(){
-            if ((box1.innerHTML == O && box2.innerHTML == O && box3.innerHTML == O)
-            || (box1.innerHTML == O && box4.innerHTML == O && box7.innerHTML == O)
-            || (box1.innerHTML == O && box5.innerHTML == O && box9.innerHTML == O)
-            || (box7.innerHTML == O && box5.innerHTML == O && box3.innerHTML == O)
-            || (box7.innerHTML == O && box8.innerHTML == O && box9.innerHTML == O)
-            || (box7.innerHTML == O && box5.innerHTML == O && box3.innerHTML == O)
-            || (box2.innerHTML == O && box5.innerHTML == O && box8.innerHTML == O)
-            || (box4.innerHTML == O && box5.innerHTML == O && box6.innerHTML == O)){
-                motion.innerHTML = 'Победил нолик!';
-                all.style.pointerEvents='auto';
-                setTimeout(() => {
-                    clear();
-                    all.style.pointerEvents = 'none';
-                    player2++
-                    counter.innerHTML = `<legend>Счёт</legend>Крестик: ${player1}<br>Нолик: ${player2}`;
-                }, 2000);
-            } else if ((box1.innerHTML == X && box2.innerHTML == X && box3.innerHTML == X)
-            || (box1.innerHTML == X && box4.innerHTML == X && box7.innerHTML == X)
-            || (box1.innerHTML == X && box5.innerHTML == X && box9.innerHTML == X)
-            || (box7.innerHTML == X && box5.innerHTML == X && box3.innerHTML == X)
-            || (box7.innerHTML == X && box8.innerHTML == X && box9.innerHTML == X)
-            || (box7.innerHTML == X && box5.innerHTML == X && box3.innerHTML == X)
-            || (box2.innerHTML == X && box5.innerHTML == X && box8.innerHTML == X)
-            || (box4.innerHTML == X && box5.innerHTML == X && box6.innerHTML == X)){
-                motion.innerHTML = 'Победил крестик!';
-                all.style.pointerEvents='auto';
-                player1++
-                counter.innerHTML = `<legend>Счёт</legend>Крестик: ${player1}<br>Нолик: ${player2}`;
-                setTimeout(() => {
-                    clear();
-                    all.style.pointerEvents = 'none';
-                }, 2000);
-            }else if (box1.innerHTML != '' && box2.innerHTML != '' && box3.innerHTML != '' && box4.innerHTML != '' &&
-             box5.innerHTML != '' && box6.innerHTML != '' && box7.innerHTML != '' && box8.innerHTML != '' && box9.innerHTML != ''){
-                motion.innerHTML = 'Ничья!';
-                all.style.pointerEvents='auto';
-                setTimeout(() => {
-                    clear();
-                    all.style.pointerEvents = 'none';
-                }, 2000);
+            for (let i = 1; i < 10; i++){
+                for (let j = 0; j < 2; j++) {
+                    function kto(j){
+                        if (j){
+                            return 'O';
+                        }else{
+                            return 'X';
+                        }
+                    }
+                    if ((eval(`box${i}.innerHTML == ${kto(j)} && box${i+1}.innerHTML == ${kto(j)} && box${i+2}.innerHTML == ${kto(j)}`))
+                    || (eval(`box${i}.innerHTML == ${kto(j)} && box${i+3}.innerHTML == ${kto(j)} && box${i+6}.innerHTML == ${kto(j)}`))
+                    || (eval(`box${i}.innerHTML == ${kto(j)} && box${i+3}.innerHTML == ${kto(j)} && box${i+6}.innerHTML == ${kto(j)}`))){
+                        if (j) {
+                            motion.innerHTML = 'Победил нолик!'; 
+                            player2++;
+                        }else{
+                            motion.innerHTML = 'Победил крестик!';
+                            player1++;
+                        }
+
+                        all.style.pointerEvents='auto';
+                        setTimeout(() => {
+                            clear();
+                            all.style.pointerEvents = 'none';
+                            counter.innerHTML = `<div>Крестик: ${player1}</div> <div>Нолик: ${player2}</div>`;}, 3000);
+                    }
+                }
             }
         }
         document.addEventListener('click', e => {
-            if (e.target.id == 'box1') {
-                if (who) {
-                    box1.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box1.innerHTML = "<div class='xo'>o</div>";
+            for (let i = 1; i < 10; i++){
+                if (eval(`e.target.id == "box${i}"`)){
+                    if (who) {
+                        eval(`box${i}.innerHTML = "<i class='fa fa-times fa-5x'></i>";`)
+                    } else {
+                        eval(`box${i}.innerHTML = "<i class='fa fa-circle-thin fa-5x'></i>";`)
+                    }
+                    eval(`box${i}.style.pointerEvents="none"`)
+                    getWho()
+                    win()
                 }
-                box1.style.pointerEvents='none'
-                console.log(box1.innerHTML)
-                getWho()
-                win()
-            }
-            if (e.target.id == 'box2') {
-                if (who) {
-                    box2.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box2.innerHTML = "<div class='xo'>o</div>";
-                }
-                box2.style.pointerEvents='none'
-                getWho()
-                win()
-            }
-            if (e.target.id == 'box3') {
-                if (who) {
-                    box3.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box3.innerHTML = "<div class='xo'>o</div>";
-                }
-                box3.style.pointerEvents='none'
-                getWho()
-                win()
-            }
-            if (e.target.id == 'box4') {
-                if (who) {
-                    box4.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box4.innerHTML = "<div class='xo'>o</div>";
-                }
-                box4.style.pointerEvents='none'
-                getWho()
-                win()
-            }
-            if (e.target.id == 'box5') {
-                if (who) {
-                    box5.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box5.innerHTML = "<div class='xo'>o</div>";
-                }
-                box5.style.pointerEvents='none'
-                getWho()
-                win()
-            }
-            if (e.target.id == 'box6') {
-                if (who) {
-                    box6.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box6.innerHTML = "<div class='xo'>o</div>";
-                }
-                box6.style.pointerEvents='none'
-                getWho()
-                win()
-            }
-            if (e.target.id == 'box7') {
-                if (who) {
-                    box7.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box7.innerHTML = "<div class='xo'>o</div>";
-                }
-                box7.style.pointerEvents='none'
-                getWho()
-                win()
-            }
-            if (e.target.id == 'box8') {
-                if (who) {
-                    box8.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box8.innerHTML = "<div class='xo'>o</div>";
-                }
-                box8.style.pointerEvents='none'
-                getWho()
-                win()
-            }
-            if (e.target.id == 'box9') {
-                if (who) {
-                    box9.innerHTML = "<div class='xo'>x</div>";
-                } else {
-                    box9.innerHTML = "<div class='xo'>o</div>";
-                }
-                box9.style.pointerEvents='none'
-                getWho()
-                win()
             }
         })
         button.onclick = function(){
