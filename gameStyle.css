@@ -27,6 +27,10 @@ i{
     transform: translate(-50%, -50%);
 }
 
+.field i{
+    font-size: 9em;
+}
+
 .field{
     margin-top: 1vw;
     display: grid;
