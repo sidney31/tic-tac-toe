@@ -45,7 +45,7 @@ html{
     transform: translate(-50%, -50%);
     width: 10vw;
     height: 3vw;
-    font-size: 20px;
+    font-size: 1.3vw;
     background-color: black;
     border: white 1px solid;
     border-radius: 5px;
@@ -66,4 +66,12 @@ html{
     width: 9vw;
     height: 2.5vw;
     line-height: 2.5vw;
+}
+
+#version{
+    position: absolute;
+    top: 0.5vw;
+    left: 0.5vw;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 255, 255);
 }
