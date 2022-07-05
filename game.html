@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./gameStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title>tic tac toe</title>
+</head>
+
+<body>
+    <div id="version">v0.6</div>
+    <div id="motion">Ходит нолик!</div>
+    <div id="counter">
+        <div>Крестик: 0</div> 
+        <div>Нолик: 0</div>
+    </div>
+    <div class="field", id='field'>
+        <div class="box", id="box1"></div>
+        <div class="box", id="box2"></div>
+        <div class="box", id="box3"></div>
+        <div class="box", id="box4"></div>
+        <div class="box", id="box5"></div>
+        <div class="box", id="box6"></div>
+        <div class="box", id="box7"></div>
+        <div class="box", id="box8"></div>
+        <div class="box", id="box9"></div>
+    </div>
+    <h3 id="button">Очистить</h3>
+    <div id="all"></div>
+    <a class="button" href="index.html"><i class="fa fa-sign-out fa-5x"></i></a>
+    
+
+
+
+
+
+
+
+    <script>
+        let who = 0;
+        let e;
+
+        let player1 = 0, player2 = 0;
+
+
+        function clear() {
+            getWho()
+            for (let i = 1; i< 10; i++){
+                eval(`box${i}.innerHTML = "";`)
+                eval(`box${i}.style.pointerEvents="auto";`)
+            }
+        }
+
+        function getWho(){
+            if (!who) {
+                motion.innerHTML = "Ходит крестик!";
+            } else {
+                motion.innerHTML = "Ходит нолик!";
+            }
+            who = !who
+        }
+        o = "<i class='fa fa-circle-thin fa-5x'></i>";
+        x = "<i class='fa fa-times fa-5x'></i>";
+        function win(){
+            for (let j = 0; j < 2; j++) {
+                if ((eval(`box1.innerHTML == ${o || x} && box2.innerHTML == ${o || x} && box3.innerHTML == ${o || x}`))){
+                    console.log('yes')
+                    if (j) {
+                        motion.innerHTML = 'Победил нолик!'; 
+                        player2++;
+                    }else{
+                        motion.innerHTML = 'Победил крестик!';
+                        player1++;
+                    }
+
+                    all.style.pointerEvents='auto';
+                    setTimeout(() => {
+                        clear();
+                        all.style.pointerEvents = 'none';
+                        counter.innerHTML = `<div>Крестик: ${player1}</div> <div>Нолик: ${player2}</div>`;}, 3000);
+                }
+            }
+        }
+        document.addEventListener('click', e => {
+            for (let i = 1; i < 10; i++){
+                if (eval(`e.target.id == "box${i}"`)){
+                    if (who) {
+                        eval(`box${i}.innerHTML = "<i class='fa fa-times fa-5x'></i>";`)
+                    } else {
+                        eval(`box${i}.innerHTML = "<i class='fa fa-circle-thin fa-5x'></i>";`)
+                    }
+                    eval(`box${i}.style.pointerEvents="none"`)
+                    getWho()
+                    win()
+                }
+            }
+        })
+        button.onclick = function(){
+            clear()
+        };
+    </script>
+</body>
+
+</html>

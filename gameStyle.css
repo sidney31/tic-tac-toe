@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+html{
+    overflow:  hidden;
+    background-color: rgb(0, 0, 0);
+}
+
+body{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+}
+
+i{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    pointer-events: none;
+    user-select: none;
+    margin-top: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.field{
+    margin-top: 1vw;
+    display: grid;
+    grid-template-columns: repeat(3, calc(80ch/3));
+    grid-template-rows: repeat(3, calc(80ch/3));
+}
+.box{
+    border: 3px solid white;
+}
+#motion{
+    text-align: center;
+    width: 15ch;
+    font-size: 4em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#button{
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+    margin-top: 3%;
+    font-size: 1.5em;
+}
+#counter{
+    width: 30ch;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.6em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#counter::before{
+    content: "\f00d";
+    font-family: FontAwesome;
+    color: rgb(206, 32, 41);
+    font-size: 1.3em;
+}
+#counter::after{
+    content: "\f1db";
+    font-family: FontAwesome;
+    color: rgb(33, 110, 190);
+    font-size: 1.3em;
+}
+
+#version{
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.5rem;
+    color: rgb(98, 98, 98);
+}
+#all{
+    position: absolute;
+    width: 100vw;
+    height: 100vw;
+    pointer-events: none;
+}
+.button{
+    position: absolute;
+    top: 2%;
+    left: 95%;
+}

@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+html{
+    overflow:  hidden;
+    background-color: black;
+}
+
+.title{
+    position: absolute;
+    top: 20%;
+    font-size: 5vw;
+    font-family: Arial, Helvetica, sans-serif;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.title::before{
+    content: "\f00d";
+    position: relative;
+    top: -25px;
+    left: -18px;
+    font-family: FontAwesome;
+    color: rgb(206, 32, 41);
+    font-size: 1.1em;
+    
+}
+.title::after{
+    content: "\f1db";
+    position: relative;
+    top: 15px;
+    left: 18px;
+    font-family: FontAwesome;
+    color: rgb(33, 110, 190);
+}
+
+.button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10vw;
+    height: 3vw;
+    font-size: 20px;
+    background-color: black;
+    border: white 1px solid;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 3vw;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.button:hover{
+    color: black;
+    background-color: white;
+    border-color: black;
+}
+
+.button:active{
+    color: black;
+    background-color: rgb(255, 255, 255);
+    width: 9vw;
+    height: 2.5vw;
+    line-height: 2.5vw;
+}
